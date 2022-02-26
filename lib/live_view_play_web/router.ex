@@ -1,5 +1,6 @@
 defmodule LiveViewPlayWeb.Router do
   use LiveViewPlayWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -16,6 +17,8 @@ defmodule LiveViewPlayWeb.Router do
 
   scope "/", LiveViewPlayWeb do
     pipe_through :browser
+
+    live "/myliveview", MyLiveView
 
     get "/", PageController, :index
   end
